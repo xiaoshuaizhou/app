@@ -11,8 +11,11 @@ Route::group(['prefix' => 'admin'], function (){
     //退出
     Route::post('/logout', '\App\Admin\Controllers\LoginController@logout')
     ->name('/admin/logout');
-//    Route::group(['middleware' => 'authadmin'], function (){
+    Route::group(['middleware' => 'authadmin:admin'], function (){
         //后台首页
         Route::get('/index', '\App\Admin\Controllers\IndexController@index');
-//    });
+    });
+    Route::get('about', function (){
+        return view('admin.welcome');
+    });
 });

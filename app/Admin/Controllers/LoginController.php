@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use Auth;
 use App\Exceptions\AuthenticatesLogout;
 use App\Http\Requests\AdminLoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -36,7 +37,7 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return \Auth::guard('admin');
+        return Auth::guard('admin');
     }
 
     /**
@@ -66,7 +67,7 @@ class LoginController extends Controller
      */
     public function logout()
     {
-        \Auth::guard('admin')->logout();
+        Auth::guard('admin')->logout();
 
         return redirect('/admin/login');
     }
